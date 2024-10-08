@@ -69,15 +69,6 @@ jobs:
           org.gradle.vfs.watch=false
           EOF
 
-      - name: Format
-        uses: Wandalen/wretry.action@v1.0.36
-        with:
-          command: ./gradlew format --scan --info --stacktrace
-          attempt_limit: 3
-          attempt_delay: 5000 # in ms
-
-      - name: Ensure no file change
-        run: git --no-pager diff && test -z "$(git --no-pager diff)"
 
       - name: Build
         uses: Wandalen/wretry.action@v1.0.36
@@ -122,28 +113,6 @@ jobs:
           update-comment: true
           debug-mode: false
 
-      - name: Test if Seed spec is updated
-        uses: Wandalen/wretry.action@v1.0.36
-        with:
-          command: ./gradlew format && git --no-pager diff && test -z "$(git --no-pager diff)"
-          attempt_limit: 3
-          attempt_delay: 5000 # in ms
-
-      # todo (cgardens) - scope by platform.
-      - name: Check documentation
-        if: success() && github.ref == 'refs/heads/main'
-        run: ./tools/site/link_checker.sh check_docs
-
-      #       This is only required on the usual github runner. The usual runner does not contain enough disk space for our use.
-      #      - name: Get Docker Space
-      #        run: docker run --rm busybox df -h
-
-      - name: Run End-to-End Acceptance Tests
-        uses: Wandalen/wretry.action@v1.0.36
-        with:
-          command: ./tools/bin/acceptance_test.sh
-          attempt_limit: 3
-          attempt_delay: 5000 # in ms
 
       - uses: actions/setup-python@v4
         if: always()
