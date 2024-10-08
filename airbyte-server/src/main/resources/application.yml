@@ -114,23 +114,23 @@ airbyte:
       destination-stderr:
         cpu-limit: 0.5
         cpu-request: 0.01
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       destination-stdout:
         cpu-limit: 0.5
         cpu-request: 0.01
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       heartbeat:
         cpu-limit: 0.2
         cpu-request: 0.05
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       source-stderr:
         cpu-limit: 0.5
         cpu-request: 0.01
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       # Default base sync values
       destination:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:1}
@@ -140,8 +140,8 @@ airbyte:
       destination-stdin:
         cpu-limit: 1
         cpu-request: 0.5
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       orchestrator:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:1}
         cpu-request: ${JOB_MAIN_CONTAINER_CPU_REQUEST:0.5}
@@ -155,8 +155,8 @@ airbyte:
       source-stdout:
         cpu-limit: 1
         cpu-request: 0.5
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       # API syncs
       source-api:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:1}
@@ -166,8 +166,8 @@ airbyte:
       source-stdout-api:
         cpu-limit: 1
         cpu-request: 0.2
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       orchestrator-api:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:1}
         cpu-request: ${JOB_MAIN_CONTAINER_CPU_REQUEST:0.3}
@@ -181,8 +181,8 @@ airbyte:
       destination-stdin-api:
         cpu-limit: 1
         cpu-request: 0.1
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       # Database syncs resource override
       source-database:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:2}
@@ -192,8 +192,8 @@ airbyte:
       source-stdout-database:
         cpu-limit: 1
         cpu-request: 0.5
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
       orchestrator-database:
         cpu-limit: ${JOB_MAIN_CONTAINER_CPU_LIMIT:2}
         cpu-request: ${JOB_MAIN_CONTAINER_CPU_REQUEST:1}
@@ -207,8 +207,8 @@ airbyte:
       destination-stdin-database:
         cpu-limit: 2
         cpu-request: 0.5
-        memory-limit: 50Mi
-        memory-request: 25Mi
+        memory-limit: 1024Mi
+        memory-request: 200Mi
 
     job:
       error-reporting:
